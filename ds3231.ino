@@ -34,6 +34,16 @@ void setup() {
   Serial.println(rtc.leTemperatura());
   Serial.println();
 
+  // TESTE ATUALIZAÇÃO ---------------------------------------------
+  relogio.hora = 8;
+  relogio.minuto = 30;
+  relogio.segundo = 0;
+  relogio.dia = 26;
+  relogio.mes = 2;
+  relogio.ano = 20;
+  relogio.diaSemana = 4;
+  rtc.atualiza(relogio);
+  
   // INICIA TIMER --------------------------------------------------
   os_timer_setfn(&tmr0, timer0, NULL); //Indica ao Timer qual sera sua Sub rotina.
   os_timer_arm(&tmr0, 1000, true);
@@ -64,6 +74,8 @@ void timer0(void*z){
 } // end timer0()
 
 void loop() {
-
-
+  // Imprimi dados relogio
+  sprintf(charAux200, "%u:%u:%u - %u/%u/%u - %u", relogio.hora, relogio.minuto, relogio.segundo, relogio.dia, relogio.mes, relogio.ano, relogio.diaSemana);
+  Serial.println(charAux200);
+  delay(1000);
 }
