@@ -57,7 +57,7 @@ class i2cClass{
   
       pinMode(SDA, OUTPUT);
   
-      digitalWrite(SCL, LOW);
+      digitalWrite(SCL, HIGH);
       delay(DELAY_I2C);
       digitalWrite(SDA, LOW);
       delay(DELAY_I2C);
@@ -82,13 +82,13 @@ class i2cClass{
       pinMode(SDA, OUTPUT);    
   
       delay(DELAY_I2C);
-      digitalWrite(SDA, LOW);
+      digitalWrite(SDA, HIGH);
       delay(DELAY_I2C);
-      digitalWrite(SCL, LOW);
+      digitalWrite(SCL, HIGH);
       delay(DELAY_I2C);
       digitalWrite(SCL, LOW);
   }
-  
+
   unsigned char write(unsigned char dado){
   
       unsigned char i, ack;
@@ -113,8 +113,6 @@ class i2cClass{
       delay(DELAY_I2C);
       ack = digitalRead(SDA);
       digitalWrite(SCL, LOW);
-      pinMode(SDA, INPUT);
-      digitalWrite(SDA, HIGH);
       
       return ack;
   
